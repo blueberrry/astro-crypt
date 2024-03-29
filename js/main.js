@@ -27,6 +27,8 @@ function getArbitraryRange(min, max) {
 class VisualiseCelestialData {
   constructor(svg) {
     this.svg = svg;
+
+    // get width and height of svg for further calculations
     this.width = +svg.attr('width');
     this.height = +svg.attr('height');
   }
