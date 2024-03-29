@@ -24,16 +24,11 @@ function getArbitraryRange(min, max) {
 
 // New file better structure/readability
 
-// Change function to class to expose methods
 class VisualiseCelestialData {
   constructor(svg) {
     this.svg = svg;
-    // this.containerId = containerId;
     this.width = +svg.attr('width');
     this.height = +svg.attr('height');
-    //random
-
-    // this.svg = d3.select('#celestial-map').append('svg').attr('width', width).attr('height', height);
   }
 
   drawOrbits(orbitsData) {
