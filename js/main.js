@@ -30,8 +30,8 @@ class VisualiseCelestial {
     this.containerId = containerId;
     this.width = width;
     this.height = height;
+    //random
 
-    
     this.svg = d3.select('#celestial-map').append('svg').attr('width', width).attr('height', height);
   }
 
