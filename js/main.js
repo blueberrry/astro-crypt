@@ -25,14 +25,15 @@ function getArbitraryRange(min, max) {
 // New file better structure/readability
 
 // Change function to class to expose methods
-class VisualiseCelestial {
-  constructor(containerId, width, height) {
-    this.containerId = containerId;
-    this.width = width;
-    this.height = height;
+class VisualiseCelestialData {
+  constructor(svg) {
+    this.svg = svg;
+    // this.containerId = containerId;
+    this.width = +svg.attr('width');
+    this.height = +svg.attr('height');
     //random
 
-    this.svg = d3.select('#celestial-map').append('svg').attr('width', width).attr('height', height);
+    // this.svg = d3.select('#celestial-map').append('svg').attr('width', width).attr('height', height);
   }
 
   drawOrbits(orbitsData) {
@@ -71,13 +72,16 @@ class VisualiseCelestial {
 // class declarations are hoisted to the top of their scope during compilation
 // phase.
 
-class VisualiseCelestialData {
+// creates svg
+class VisualiseCelestial {
   constructor(containerId, width, height) {
     this.containerId = containerId;
     this.width = width;
     this.height = height;
 
-    this.visualiser = new VisualiseCelestial(containerId, width, height);
+    const svg = d3.select(`#${containerId}`).append('svg').attr('width', width).attr('height', height);
+
+    this.visualiser = new VisualiseCelestialData(svg);
   }
 
   visualiseData(orbitsData, planetsData) {
@@ -105,9 +109,9 @@ window.onload = function () {
       { name: 'Jupiter', radius: 60, color: 'brown', orbitRadius: getArbitraryRange(-180, 180) },
       { name: 'Saturn', radius: 44, color: 'purple', orbitRadius: getArbitraryRange(-180, 180) },
     ];
-    const visualiseCelestialData = new VisualiseCelestialData('celestial-map', 600, 400);
+    const visualiseCelestial = new VisualiseCelestial('celestial-map', 600, 400);
 
-    return visualiseCelestialData.visualiseData(orbitsData, planetsData);
+    return visualiseCelestial.visualiseData(orbitsData, planetsData);
   });
 };
 
