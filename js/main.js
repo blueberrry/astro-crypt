@@ -72,17 +72,32 @@ class VisualiseCelestialData {
 // class declarations are hoisted to the top of their scope during compilation
 // phase.
 
-// creates svg
+/**
+ * Create the svg with height, width and id parameters
+ * @param {string} id
+ * @param {number} width
+ * @param {number} height
+ */
+
 class VisualiseCelestial {
   constructor(containerId, width, height) {
+    // bind params to this
     this.containerId = containerId;
     this.width = width;
     this.height = height;
 
+    // Cretes d3 svg with defined width and height
     const svg = d3.select(`#${containerId}`).append('svg').attr('width', width).attr('height', height);
 
+    // Initialise the
     this.visualiser = new VisualiseCelestialData(svg);
   }
+
+  /**
+   * method to visualise graphic with data
+   * @param {array} orbitsData
+   * @param {array} planetsData
+   */
 
   visualiseData(orbitsData, planetsData) {
     this.visualiser.drawOrbits(orbitsData);
@@ -94,13 +109,14 @@ window.onload = function () {
   const button = document.getElementById('create-random');
 
   button.addEventListener('click', () => {
+    // Define orbit data for this svg
     const orbitsData = [
       { radius: 50, color: 'gray' },
       { radius: 100, color: 'gray' },
       { radius: 150, color: 'gray' },
     ];
 
-    // Define planet data
+    // Define planet data for this svg
     const planetsData = [
       { name: 'Mercury', radius: 5, color: 'orange', orbitRadius: getArbitraryRange(-180, 180) },
       { name: 'Venus', radius: 8, color: 'yellow', orbitRadius: getArbitraryRange(-180, 180) },
@@ -109,8 +125,11 @@ window.onload = function () {
       { name: 'Jupiter', radius: 60, color: 'brown', orbitRadius: getArbitraryRange(-180, 180) },
       { name: 'Saturn', radius: 44, color: 'purple', orbitRadius: getArbitraryRange(-180, 180) },
     ];
+
+    // Initialise svg
     const visualiseCelestial = new VisualiseCelestial('celestial-map', 600, 400);
 
+    // Run method to draw orbits and planets
     return visualiseCelestial.visualiseData(orbitsData, planetsData);
   });
 };
