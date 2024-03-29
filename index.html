@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Noto+Sans+Old+South+Arabian&family=Saira+Semi+Condensed:wght@100;400;600&family=Saira:ital,wght@0,100;0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Celestial Code</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="js/main.js" defer></script>
+  </head>
+  <body class="saira-x">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header>
+      <img
+        class="mobile img-main"
+        src="./images/celestial_mobile.jpg"
+        alt="Artistic and cartoonish representation of the sun and whimsical celestial bodies orbiting around it"
+      />
+    </header>
+    <main class="page">
+      <section class="main-panel">
+        <h1>Celestial Code</h1>
+        <form onsumbit="(e) => e.preventDefault()" id="message-form">
+          <fieldset class="form">
+            <label for="my_message" class="small-panel">Enter your message please kind person</label>
+            <input type="text" id="my_message" placeholder="Please type your message" />
+          </fieldset>
+          <button onclick="encodeMessage()" type="button">Encode</button>
+          <button onclick="decodeMessage()" type="button">Decode</button>
+        </form>
+        <div class="output-section">
+          <p>Encoded/Decoded Message:</p>
+          <div id="encoded-decoded"></div>
+        </div>
+        <button type="button" id="create-random">Visualise Celestial</button>
+
+        <div id="celestial-map">
+          <!-- Visualisation rendered area -->
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+
+<!-- 
+
+  onclick="(() => {
+
+            // we don't want to be doing this again and again!
+            // but we have to because we changed it to class
+            // higher order class or function needed
+           const orbitsData = [
+    { radius: 50, color: 'gray' },
+    { radius: 100, color: 'gray' },
+    { radius: 150, color: 'gray' },
+  ];
+
+  // Define planet data
+  const planetsData = [
+    { name: 'Mercury', radius: 5, color: 'orange', orbitRadius: getArbitraryRange(-180, 180) },
+    { name: 'Venus', radius: 8, color: 'yellow', orbitRadius: getArbitraryRange(-180, 180) },
+    { name: 'Earth', radius: 10, color: 'blue', orbitRadius: getArbitraryRange(-180, 180) },
+    { name: 'Mars', radius: 4, color: 'red', orbitRadius: getArbitraryRange(-180, 180) },
+    { name: 'Jupiter', radius: 60, color: 'brown', orbitRadius: getArbitraryRange(-180, 180) },
+    { name: 'Saturn', radius: 44, color: 'purple', orbitRadius: getArbitraryRange(-180, 180) },
+  ];
+
+  const visualiser = new VisualiseCelestial('celestial-map', 600, 400);
+
+  visualiser.drawOrbits(orbitsData);
+  visualiser.drawPlanets(planetsData); 
+        })()"
+
+      -->
